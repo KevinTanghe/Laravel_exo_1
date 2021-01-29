@@ -11,7 +11,7 @@
     <title>Business Casual - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link
@@ -20,16 +20,31 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/business-casual.min.css" rel="stylesheet">
+    <link href="{{asset('css/business-casual.min.css')}}" rel="stylesheet">
 
 </head>
 
 <body>
+    @foreach ($main as $item)
+        <h1 class="site-heading text-center text-white d-none d-lg-block">
+            <span class="site-heading-upper text-primary mb-3">{{$item->Titreh1}}</span>
+            <span class="site-heading-lower">{{$item->mainTitre}}</span>
+        </h1>  
+    @endforeach
 
+    @include('partials/navbar')
 
+    @yield('content')
+    @foreach ($footer as $item)
+        <footer class="footer text-faded text-center py-5">
+            <div class="container">
+                <p class="m-0 small">{{$item->copyright}}</p>
+            </div>
+        </footer>
+    @endforeach      
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>
